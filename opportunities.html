@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Opportunities - Instafans Strategy 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #ffffff; background: #0a0a0a; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        nav { background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); padding: 1rem 0; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-container { display: flex; align-items: center; gap: 1rem; }
+        .logo-img { height: 40px; width: auto; }
+        .logo-text { font-size: 1.5rem; font-weight: 900; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
+        .nav-links a { text-decoration: none; color: #cccccc; font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; position: relative; }
+        .nav-links a:hover { color: #ffffff; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #ffffff, #cccccc); transition: width 0.3s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        .hero { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%); padding: 140px 0 100px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%); }
+        .hero-content { position: relative; z-index: 2; }
+        .hero h1 { font-size: 4rem; font-weight: 900; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ffffff 0%, #cccccc 50%, #999999 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-transform: uppercase; letter-spacing: 3px; }
+        .hero p { font-size: 1.3rem; color: #cccccc; font-weight: 400; }
+        .main-content { padding: 100px 0; background: #0a0a0a; }
+        .section { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); margin: 3rem 0; padding: 3rem; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); position: relative; overflow: hidden; }
+        .section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #ffffff, #cccccc); }
+        .section h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; }
+        .opportunities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        .opportunity-card { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.1); position: relative; overflow: hidden; }
+        .opportunity-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #ffffff, #cccccc); }
+        .opportunity-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); }
+        .opportunity-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .opportunity-card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; }
+        .opportunity-card p { color: #cccccc; margin-bottom: 1.5rem; }
+        .opportunity-link { display: inline-block; color: #ffffff; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+        .opportunity-link:hover { color: #cccccc; }
+        .priority-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+        .critical { background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%); color: #ffffff; }
+        .quick-wins { background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%); color: #000000; }
+        .transformational { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); color: #ffffff; }
+        .market-expansion { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: #ffffff; }
+        .back-link { display: inline-block; color: #ffffff; text-decoration: none; font-weight: 500; margin-bottom: 2rem; }
+        .back-link:hover { color: #cccccc; }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%); color: #000000; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); }
+        .footer { background: #000000; color: #666666; padding: 40px 0; text-align: center; }
+        .footer p { opacity: 0.8; }
+        @media (max-width: 768px) { .nav-links { display: none; } .opportunities-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 3rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo-container">
+                    <img src="IF_INST_LOGO_NEG.svg" alt="Instafans Logo" class="logo-img">
+                    <div class="logo-text">Strategy 2025</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="foundation.html">Foundation</a></li>
+                    <li><a href="opportunities.html">Opportunities</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                    <li><a href="roadmap.html">Roadmap</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Four Core Opportunities</h1>
+                <p>Strategic initiatives to transform Instafans into the leading LATAM creator platform</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="container">
+            <a href="index.html" class="back-link"> Back to Home</a>
+
+            <div class="section">
+                <h2>Strategic Overview</h2>
+                <p>These four opportunities leverage the company's Spanish-language expertise and AI-first development approach to capture the underserved LATAM creator market within 6-12 months.</p>
+                
+                <div class="opportunities-grid">
+                    <div class="opportunity-card">
+                        <div class="priority-badge critical"> Critical</div>
+                        <div class="opportunity-icon"></div>
+                        <h3>LATAM Payout Infrastructure</h3>
+                        <p>Solve the biggest barrier to creator adoption through Zazoo integration and strategic banking partnerships</p>
+                        <a href="opportunity-1.html" class="opportunity-link">Explore Details </a>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <div class="priority-badge quick-wins"> Quick Wins</div>
+                        <div class="opportunity-icon"></div>
+                        <h3>Creator Migration & Onboarding</h3>
+                        <p>Eliminate switching costs by automating content migration from existing platforms</p>
+                        <a href="opportunity-2.html" class="opportunity-link">Explore Details </a>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <div class="priority-badge transformational"> Transformational</div>
+                        <div class="opportunity-icon"></div>
+                        <h3>Referral Ecosystem & Gamification</h3>
+                        <p>Create viral growth through incentivized creator and fan referrals with social media integration</p>
+                        <a href="opportunity-3.html" class="opportunity-link">Explore Details </a>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <div class="priority-badge market-expansion"> Market Expansion</div>
+                        <div class="opportunity-icon"></div>
+                        <h3>AI-Powered Landing Page Automation</h3>
+                        <p>Scale conversion optimization across multiple markets and creator niches independently</p>
+                        <a href="opportunity-4.html" class="opportunity-link">Explore Details </a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3 style="margin-bottom: 1rem; color: #ffffff;">Ready to see the implementation plan?</h3>
+                <a href="roadmap.html" class="cta-button">View Implementation Roadmap </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Instafans Strategy. Executive Strategy Document for CEO/Founder Review and Alignment.</p>
+        </div>
+    </footer>
+</body>
+</html>
