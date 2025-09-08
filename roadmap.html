@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,51 +6,379 @@
     <title>Implementation Roadmap - Instafans Strategy 2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #ffffff; background: #0a0a0a; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        nav { background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); padding: 1rem 0; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo-container { display: flex; align-items: center; gap: 1rem; }
-        .logo-img { height: 40px; width: auto; }
-        .logo-text { font-size: 1.5rem; font-weight: 900; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; }
-        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
-        .nav-links a { text-decoration: none; color: #cccccc; font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; position: relative; }
-        .nav-links a:hover { color: #ffffff; }
-        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #ffffff, #cccccc); transition: width 0.3s ease; }
-        .nav-links a:hover::after { width: 100%; }
-        .hero { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%); padding: 140px 0 100px; text-align: center; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%); }
-        .hero-content { position: relative; z-index: 2; }
-        .hero h1 { font-size: 4rem; font-weight: 900; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ffffff 0%, #cccccc 50%, #999999 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-transform: uppercase; letter-spacing: 3px; }
-        .hero p { font-size: 1.3rem; color: #cccccc; font-weight: 400; }
-        .main-content { padding: 100px 0; background: #0a0a0a; }
-        .section { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); margin: 3rem 0; padding: 3rem; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); position: relative; overflow: hidden; }
-        .section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #ffffff, #cccccc); }
-        .section h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; }
-        .section h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; }
-        .section p { margin-bottom: 1rem; color: #cccccc; }
-        .section ul { margin: 1rem 0; padding-left: 2rem; }
-        .section li { margin-bottom: 0.5rem; color: #cccccc; }
-        .timeline { position: relative; margin: 2rem 0; }
-        .timeline::before { content: ''; position: absolute; left: 30px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, #ffffff, #cccccc); }
-        .timeline-item { position: relative; margin: 2rem 0; padding-left: 80px; }
-        .timeline-item::before { content: ''; position: absolute; left: 21px; top: 0; width: 20px; height: 20px; background: #ffffff; border-radius: 50%; border: 3px solid #0a0a0a; }
-        .timeline-content { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .timeline-date { font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
-        .timeline-title { font-size: 1.3rem; font-weight: 800; color: #ffffff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
-        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0; }
-        .metric-item { text-align: center; padding: 2rem; border-radius: 15px; background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .metric-value { font-size: 2.5rem; font-weight: 900; color: #ffffff; margin-bottom: 0.5rem; }
-        .metric-label { font-size: 1rem; color: #cccccc; text-transform: uppercase; letter-spacing: 1px; }
-        .highlight-box { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border-left: 4px solid #ffffff; padding: 1.5rem; margin: 2rem 0; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .back-link { display: inline-block; color: #ffffff; text-decoration: none; font-weight: 500; margin-bottom: 2rem; }
-        .back-link:hover { color: #cccccc; }
-        .cta-button { display: inline-block; background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%); color: #000000; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); }
-        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); }
-        .footer { background: #000000; color: #666666; padding: 40px 0; text-align: center; }
-        .footer p { opacity: 0.8; }
-        @media (max-width: 768px) { .nav-links { display: none; } .timeline::before { left: 15px; } .timeline-item { padding-left: 50px; } .timeline-item::before { left: 6px; } .hero h1 { font-size: 3rem; } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-container a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #cccccc;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 100px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.8) 100%), url('fitness-influencer-2.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #ff6b9d 50%, #c44569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #f0f0f0;
+            font-weight: 400;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 100px 0;
+        }
+
+        .section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            margin: 3rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            color: #f0f0f0;
+        }
+
+        .section ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            color: #f0f0f0;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #ff6b9d, #c44569);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 80px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 21px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #ff6b9d;
+            border-radius: 50%;
+            border: 3px solid #1a1a2e;
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .timeline-date {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ff6b9d;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .metric-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 107, 157, 0.5);
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ff6b9d;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            color: #f0f0f0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border-left: 4px solid #ff6b9d;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #ff6b9d;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: #ffffff;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(255, 107, 157, 0.3);
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 107, 157, 0.4);
+            background: linear-gradient(135deg, #c44569 0%, #ff6b9d 100%);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: #cccccc;
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .timeline::before { left: 15px; }
+            .timeline-item { padding-left: 50px; }
+            .timeline-item::before { left: 6px; }
+            .hero h1 { font-size: 3rem; }
+        }
     </style>
 </head>
 <body>
@@ -58,8 +386,10 @@
         <div class="container">
             <div class="nav-container">
                 <div class="logo-container">
-                    <img src="IF_INST_LOGO_NEG.svg" alt="Instafans Logo" class="logo-img">
-                    <div class="logo-text">Strategy 2025</div>
+                    <a href="index.html">
+                        <img src="IF_INST_LOGO_NEG.svg" alt="Instafans Logo" class="logo-img">
+                        <div class="logo-text">Strategy 2025</div>
+                    </a>
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -212,7 +542,7 @@
                         <div class="metric-label">Monthly Active Users</div>
                     </div>
                     <div class="metric-item">
-                        <div class="metric-value">$1M+</div>
+                        <div class="metric-value">+</div>
                         <div class="metric-label">Monthly Revenue</div>
                     </div>
                     <div class="metric-item">
@@ -267,8 +597,8 @@
             </div>
 
             <div style="text-align: center; margin-top: 3rem;">
-                <h3 style="margin-bottom: 1rem; color: #ffffff;">Ready to execute the strategy?</h3>
-                <a href="index.html" class="cta-button">Back to Strategy Overview </a>
+                <h3 style="margin-bottom: 1rem; color: #ffffff; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Ready to execute the strategy?</h3>
+                <a href="index.html" class="cta-button">Back to Strategy Overview</a>
             </div>
         </div>
     </section>
