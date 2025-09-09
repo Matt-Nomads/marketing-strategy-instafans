@@ -1,38 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instafans Campaign Landing - Lifestyle</title>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instafans Campaign Landing - Lifestyle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.8) 100%), url('fitness-influencer-2.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            margin-bottom: 2rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .gradient-text {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #ff6b9d 50%, #c44569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #f0f0f0;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: #ffffff;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);
+            border: 2px solid transparent;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(255, 107, 157, 0.4);
+            background: linear-gradient(135deg, #c44569 0%, #ff6b9d 100%);
+        }
+
+        .hero-influencer {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 80vh;
+            width: auto;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        .lifestyle-discovery {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            margin: 50px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lifestyle-discovery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+        }
+
+        .lifestyle-discovery h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .lifestyle-discovery p {
+            font-size: 1.2rem;
+            color: #f0f0f0;
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: #ffffff;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(255, 107, 157, 0.3);
+            border: 2px solid transparent;
+            text-align: center;
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .section-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 107, 157, 0.4);
+            background: linear-gradient(135deg, #c44569 0%, #ff6b9d 100%);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: #cccccc;
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gradient-text { font-size: 2.5rem; }
+            .hero-influencer { display: none; }
+            .lifestyle-discovery h2 { font-size: 2rem; }
+        }
+    </style>
 </head>
 <body>
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <img src="instafans-logo-white.svg" alt="Instafans logo" class="logo">
-      <h1 class="gradient-text">Turn Your Lifestyle Into Fandom</h1>
-      <p>Join Instafans and connect with a vibrant community. Share your daily life, wellness tips, and lifestyle inspiration with engaged followers!</p>
-      <a href="https://instafans.com/signup" class="cta-btn" target="_blank">Sign Up Now</a>
-    </div>
-    <img src="lifestyle-influencer.png" alt="Lifestyle Influencer" class="hero-influencer">
-  </section>
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <img src="IF_INST_LOGO_NEG.svg" alt="Instafans logo" class="logo">
+            <h1 class="gradient-text">Turn Your Lifestyle Into Fandom</h1>
+            <p>Join Instafans and connect with a vibrant community. Share your daily life, wellness tips, and lifestyle inspiration with engaged followers!</p>
+            <a href="https://instafans.com/signup" class="cta-btn" target="_blank">Sign Up Now</a>
+        </div>
+        <img src="fitness-influencer-2.png" alt="Lifestyle Influencer" class="hero-influencer">
+    </section>
 
-  <!-- Below the fold: Lifestyle-focused sections -->
-  <section class="section lifestyle-discovery">
-    <div class="container">
-      <h2>Grow Your Lifestyle Audience, Get Paid!</h2>
-      <p>Share your daily routines, wellness practices, and lifestyle inspiration with a global audience. Instafans helps lifestyle creators build authentic connections and turn their passion into income.</p>
-      <a href="https://instafans.com/signup" class="section-cta" target="_blank">Boost Your Lifestyle Profile</a>
-    </div>
-  </section>
+    <!-- Below the fold: Lifestyle-focused sections -->
+    <section class="section lifestyle-discovery">
+        <div class="container">
+            <h2>Grow Your Lifestyle Audience, Get Paid!</h2>
+            <p>Share your daily routines, wellness practices, and lifestyle inspiration with a global audience. Instafans helps lifestyle creators build authentic connections and turn their passion into income.</p>
+            <a href="https://instafans.com/signup" class="section-cta" target="_blank">Boost Your Lifestyle Profile</a>
+        </div>
+    </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Instafans. All rights reserved.</p>
-    </div>
-  </footer>
-
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Instafans. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
-</html> 
+</html>
